@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TechSupport.Backend</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="~/lib/material.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+@{
+    IDictionary<string, string> Links = new Dictionary<string, string>() {
+        { "Report an Issue", "http://localhost:3000/" }
+    };
+}
+<body>
+    <div class="mdl-layout mdl-js-layout layout-transparent mdl-layout--no-desktop-drawer-button">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout__title">TechSupport.Backend</div>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    @foreach (var link in Links)
+                    {
+                        <a class="mdl-navigation__link" href="@link.Value">@link.Key</a>
+                    }
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <nav class="mdl-navigation">
+                @foreach (var link in Links)
+                {
+                    <a class="mdl-navigation__link" href="@link.Value">@link.Key</a>
+                }
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/material.min.js"></script>
+    <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="false"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

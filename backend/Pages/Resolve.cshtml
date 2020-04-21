@@ -1,0 +1,75 @@
+﻿@page
+@model TechSupport.Backend.Pages.CreateModel
+
+@{
+    string reportId = Model.Resolution.Report.Id.ToString("000000");
+    ViewData["Title"] = "Resolve Report #" + reportId;
+    DateTime open = Model.Resolution.Report.Open.Value;
+    DateTime deadline = open.AddHours(2);
+}
+
+<form method="post" enctype="multipart/form-data" class="mdl-card card-center mdl-shadow--4dp">
+    <input type="hidden" value="@deadline.ToUniversalTime()" id="deadline" />
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Resolve Report&nbsp;<code>#@reportId</code></h2>
+        <div class="mdl-card__subtitle-text">
+            Opened: @open.ToShortTimeString()&nbsp;|&nbsp;Resolve before: @deadline.ToShortTimeString()
+        </div>
+    </div>
+    <div class="mdl-card__supporting-text mdl-card--border mdl-grid">
+        <div class="mdl-cell mdl-cell--5-col mdl-textfield">
+            <span class="mdl-textfield__input">@Model.Resolution.Report.Product.Category.Name</span>
+        </div>
+        <i class="material-icons mdl-cell mdl-cell--2-col" style="vertical-align:middle;text-align:center;padding:24px 0;">chevron_right</i>
+        <div class="mdl-cell mdl-cell--5-col mdl-textfield">
+            <span class="mdl-textfield__input">@Model.Resolution.Report.Product.Name</span>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield">
+            <p class="mdl-textfield__input">@Model.Resolution.Report.Message</p>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col mdl-textfield">
+            <span class="mdl-textfield__input">@Model.Resolution.Report.Email</span>
+        </div>
+        @if (Model.Resolution.Report.AttachmentType is null)
+        {
+            <p class="mdl-button mdl-cell mdl-cell--3-col" disabled>
+                <i class="material-icons">attach_file</i>&nbsp;No Attachment
+            </p>
+        }
+        else
+        {
+            <a asp-page-handler="DownloadAttachment" asp-route-id="@Model.Resolution.Report.Id" target="_blank" download="attachment_@Model.Resolution.Report.Id@Model.Resolution.Report.AttachmentType" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--3-col">
+                <i class="material-icons">attach_file</i>&nbsp;Download Attachment
+            </a>
+        }
+    </div>
+    <div class="mdl-card__supporting-text mdl-grid">
+        <input type="hidden" asp-for="Resolution.Report.Id" />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+            <textarea asp-for="Resolution.Message" class="mdl-textfield__input" required maxlength="500"></textarea>
+            <label asp-for="Resolution.Message" class="mdl-textfield__label"></label>
+            <span asp-validation-for="Resolution.Message" class="mdl-textfield__error"></span>
+        </div>
+        <label for="Resolution_Attachment" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            <input asp-for="Resolution.Attachment" type="file" style="display:none;" />
+            <i class="material-icons">attach_file</i>&nbsp;
+            <span class="js-filename">Add Attachment (optional)</span>
+        </label>
+        <div class="mdl-chip mdl-color--accent mdl-color-text--accent-contrast" asp-validation-summary="ModelOnly"></div>
+    </div>
+    <div class="mdl-card__actions">
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--primary">Resolve</button>
+    </div>
+    <div class="mdl-card__menu">
+        <a asp-page-handler="Close" asp-route-id="@Model.Resolution.Report.Id" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--colored" id="nav-back">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="nav-back">Back to Index</div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/resolve.js"></script>
+}

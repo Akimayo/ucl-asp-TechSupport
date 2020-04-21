@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.layout-transparent {
+    background-image: url('background.jpg');
+    background-size: cover;
+    position: relative;
+    .mdl-layout__header, .mdl-layout__header-row .mdl-navigation__link, .mdl-layout__drawer-button {
+        color: black;
+    }
+    .card-center {
+        position: absolute;
+        left: 5vw;
+        right: 5vw;
+        top: 25vh;
+        width: auto;
+        .mdl-card__actions {
+            text-align: right;
+        }
+        label.mdl-button {
+            margin: 24px 8px;
+        }
+        @media screen and (min-width: 840px) {
+            left: 20vw;
+            right: 20vw;
+            top: 15vh;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+﻿@page
+@model TechSupport.Backend.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="mdl-card mdl-shadow--4dp card-center">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Resolve Reports</h2>
+    </div>
+    <ul class="mdl-card__supporting-text mdl-list">
+            <li class="mdl-list__item mdl-list__item--three-line js-template">
+                <div class="mdl-list__item-primary-content js-gray">
+                    <i class="material-icons mdl-list__item-avatar mdl-color--accent">report</i>
+                    <span>
+                        <code class="js-template__code"></code>
+                        <span class="js-template__product"></span>
+                    </span>
+                    <span class="mdl-list__item-text-body">
+                        Reported: <span class="js-template__timestamp"></span><br />
+                        <em class="js-template__message"></em>
+                    </span>
+                </div>
+                <div class="mdl-list__item-secondary-action">
+                    <i class="material-icons js-template__attachment js-gray">attach_file</i>
+                    <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored js-template__link js-disable">Resolve <code class="js-template__code"></code></a>
+                </div>
+            </li>
+            <li class="mdl-list__item js-loading">
+                <div class="mdl-list__item-primary-content">
+                    <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active mdl-list__item-avatar mdl-color--white"></div>
+                    <span>Loading...</span>
+                </div>
+            </li>
+            <li class="mdl-list__item js-empty" style="display:none;">
+                <div class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar mdl-color--white mdl-color-text--primary">sentiment_very_satisfied</i>
+                    <span>Yay! No unresolved issues!</span>
+                </div>
+            </li>
+    </ul>
+    <div class="mdl-card__actions mdl-card--border">
+        Showing: <strong class="js-showing">&mdash;</strong> | Waiting: <strong class="js-waiting">&mdash;</strong> | Resolving: <strong class="js-resolving">&mdash;</strong>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/index.js"></script>
+}

@@ -10,8 +10,11 @@
     "@types/node": "^12.12.35",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "boostrap": "^2.0.0",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-mdl": "^2.1.0",
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-mdl": "^1.7.27"
   }
 }

@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "@aspnet/signalr@1.1.4",
+      "destination": "wwwroot/lib/signalr/",
+      "files": [
+        "dist/browser/signalr.js",
+        "dist/browser/signalr.js.map",
+        "dist/browser/signalr.min.js",
+        "dist/browser/signalr.min.js.map"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "react-mdl@2.1.0",
+      "destination": "wwwroot/lib/react-mdl/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "react-mdl@2.1.0",
+      "destination": "wwwroot/lib/react-mdl/",
+      "files": [
+        "extra/material.min.css",
+        "extra/material.min.css.map",
+        "extra/material.min.js",
+        "extra/material.min.js.map"
+      ]
+    }
+  ]
+}

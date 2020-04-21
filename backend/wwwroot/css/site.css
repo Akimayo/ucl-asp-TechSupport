@@ -1,0 +1,46 @@
+﻿.layout-transparent {
+    background-image: url('../background.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+    .layout-transparent .mdl-layout__header, .layout-transparent .mdl-layout__header-row .mdl-navigation__link, .layout-transparent .mdl-layout__drawer-button {
+        color: black;
+    }
+
+    .layout-transparent .card-center {
+        position: absolute;
+        left: 5vw;
+        right: 5vw;
+        top: 25vh;
+        width: auto;
+    }
+
+        .layout-transparent .card-center .mdl-card__actions {
+            text-align: right;
+        }
+
+        .layout-transparent .card-center a.mdl-button {
+            margin: 24px 8px;
+        }
+
+.js-template {
+    display: none;
+}
+.mdl-list__item-secondary-action .material-icons {
+    vertical-align: middle;
+}
+.mdl-list__item--two-line .mdl-list__item-primary-content .mdl-list__item-sub-title {
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+@media screen and (min-width: 840px) {
+    .layout-transparent .card-center {
+        left: 20vw;
+        right: 20vw;
+        top: 15vh;
+    }
+}
