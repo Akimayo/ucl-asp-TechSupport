@@ -56,7 +56,7 @@ class Index extends Signal {
         const elmt = this.template.clone(true).addClass('js-child').removeClass('js-template').data('entity-id', reportId).attr('id', 'report-entity-' + reportId).hide();
         elmt.find('.js-template__code').text('#' + reportId.toString().padStart(6, '0'));
         elmt.find('.js-template__product').text(productName);
-        elmt.find('.js-template__message').text(message.length > 150 ? message.substring(0, 150) + '...' : message);
+        elmt.find('.js-template__message').text(message.length > 150 ? message.substring(0, 147) + '...' : message);
         elmt.find('.js-template__timestamp').text(new Date(timestamp).toLocaleString());
         console.debug(hasAttachment);
         hasAttachment || elmt.find('.js-template__attachment').hide();
